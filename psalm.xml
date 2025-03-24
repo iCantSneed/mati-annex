@@ -9,15 +9,19 @@
     findUnusedCode="true"
     disableVarParsing="true"
     allowBoolToLiteralBoolComparison="false"
-    checkForThrowsDocblock="true"
     findUnusedPsalmSuppress="true"
     ensureArrayStringOffsetExist="true"
     ensureArrayIntOffsetExist="true"
 >
     <projectFiles>
-        <directory name="src" />
+        <directory name="src"/>
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
+            <containerXml>var/cache/dev/Mati_KernelDevDebugContainer.xml</containerXml>
+        </pluginClass>
+    </plugins>
 </psalm>
