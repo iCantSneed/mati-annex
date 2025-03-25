@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ghcr.io/${{ github.repository }}
+      image: ghcr.io/icantsneed/mati-annex:master
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
