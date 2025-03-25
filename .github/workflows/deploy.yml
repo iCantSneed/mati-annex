@@ -1,0 +1,37 @@
+name: Deploy to Production
+
+on:
+  # TODO push
+  workflow_dispatch:
+
+jobs:
+  # TODO call docker workflow if Dockerfile is changed
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/${{ github.repository }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
+
+    environment:
+      name: prod
+      url: https://mati.x10.mx
+
+    env:
+      APP_ENV: prod
+      APP_DEBUG: 0
+      FTP_REMOTE: ${{ secrets.FTP_REMOTE }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+      
+      - name: Deploy
+        run: /root/.composer/vendor/bin/deployment deployment.php
+  
