@@ -11,6 +11,7 @@ services:
       - db
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html
+      APP_ENV: dev
   db:
     image: mariadb:10.6.16
     environment:
