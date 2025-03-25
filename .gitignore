@@ -1,5 +1,7 @@
 var/
 vendor/
+*.log
+.env.local.php
 
 ###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.php
